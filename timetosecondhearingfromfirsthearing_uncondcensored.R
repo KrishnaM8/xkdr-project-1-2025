@@ -5,7 +5,7 @@ library(dplyr)
 library(tidyverse)
 library(lubridate)
 
-cs_maindata <- read.csv("/Users/krishna/Documents/XKDR/Mumbai - Legal Systems/LSD Database/hearingsandmatters_data.csv")
+cs_maindata <- read.csv("hearingsandmatters_data.csv")
 
 cs_maindata <- cs_maindata %>%
   mutate(
