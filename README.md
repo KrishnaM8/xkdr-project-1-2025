@@ -1,6 +1,6 @@
 # xkdr-project-1-2025
 
-This repository contains work completed during my research internship with the Legal Systems Team at XKDR.
+This repository contains one of many projects completed during my research internship with the Legal Systems Team at XKDR.
 
 The project explored the use of survival analysis to model and predict the time to key events in the court system, such as case disposal and first hearing. The objective was to develop a methodological foundation that could later be applied to judicial case data.
 
