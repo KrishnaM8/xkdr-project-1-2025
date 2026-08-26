@@ -1,58 +1,80 @@
 # xkdr-project-1-2025
 
-This repository contains one of many projects completed during my research internship with the Legal Systems Team at XKDR.
+# Conditional Survival Analysis of Judicial Case Timelines
 
-The project explored the use of survival analysis to model and predict the time to key events in the court system, such as case disposal and first hearing. The objective was to develop a methodological foundation that could later be applied to judicial case data.
+## Overview
 
-Project Overview
+The project built on an **existing survival-analysis framework for judicial case timelines** and focused specifically on extending the analysis through **conditional survival analysis**.
 
-Court cases often involve significant variation in the amount of time taken to reach important procedural events. Survival analysis provides a useful framework for studying this time-to-event problem, particularly because it can account for cases where the event has not yet occurred.
+The central question was:
 
-As part of establishing a base exercise for the project, I developed model profiles and analyses for:
+> **Given that a case has already remained unresolved through a particular number of hearings, how does its probability of eventual disposal change?**
 
-Kaplan–Meier survival models — to estimate and visualize the probability of cases remaining unresolved over time.
-Cox proportional hazards models — to examine how different covariates may affect the hazard, or likelihood, of a case reaching a particular event at a given point in time.
-Conditional survival analysis — to explore survival probabilities conditional on a case having already remained unresolved for a given period.
+This approach shifts the analysis from simply asking how long cases take to resolve to examining **how the likelihood of disposal evolves conditional on the procedural history of the case**.
 
-Potential events of interest include:
+## Project Overview
 
-First hearing
-Case disposal
-Other key procedural milestones in the judicial process
+Judicial cases often pass through multiple hearings before reaching disposal. A case that has already survived several hearings without being disposed of may have a different probability of disposal than a newly filed case.
 
-Purpose
+To study this, the project applied **conditional survival analysis conditioned on the number of hearings a case had undergone**.
 
-The work was designed as a base analytical exercise to establish the modelling workflow before the underlying judicial dataset became available. The resulting profiles provide a framework that can be adapted to real court data once the relevant variables and event timelines are available.
+The analysis builds on existing survival models and examines survival probabilities after conditioning on prior hearings, providing a way to understand how case duration and procedural progression interact.
 
-Presentation
+## Conditional Survival Analysis
 
-The work and methodology were presented to the Judicial Reforms Team, covering the motivation for survival analysis, Kaplan–Meier estimation, Cox proportional hazards modelling, and potential applications to judicial case timelines.
+The key analytical framework was to estimate survival probabilities conditional on a case having already remained unresolved through a specified number of hearings.
 
-Methods
+For example:
 
-The project focuses on the following concepts:
+* What is the probability that a case remains unresolved after **5 hearings**, given that it has already reached its 5th hearing?
+* How does the probability of eventual disposal change after **10, 20, or more hearings**?
+* Does the likelihood of disposal increase or decrease as a case progresses through successive hearings?
 
-Defining the event and time-to-event variables
-Handling censored observations
-Estimating survival functions using Kaplan–Meier methods
-Comparing survival curves across groups
-Modelling covariate effects using Cox proportional hazards
-Interpreting hazard ratios
-Exploring conditional survival probabilities
-Translating survival-analysis outputs into questions relevant to judicial reform
-Repository Structure
+This provides a more granular view of judicial timelines than an unconditional survival curve alone.
+
+## Methodology
+
+The project worked with the existing survival-analysis framework and focused on extending it through conditional analysis.
+
+Key components included:
+
+* Defining **case disposal as the event of interest**
+* Measuring time-to-event within the existing survival framework
+* Accounting for **censored cases** that had not yet been disposed
+* Conditioning survival probabilities on the **number of hearings already completed**
+* Comparing survival patterns across different points in a case's procedural history
+* Interpreting conditional survival probabilities in the context of judicial case progression
+
+## Why Hearings Matter
+
+The number of hearings provides an important measure of a case's procedural progression.
+
+Two cases with similar overall ages may be at very different stages of the judicial process if one has undergone substantially more hearings. Conditioning survival estimates on hearings therefore allows the analysis to capture an aspect of case progression that a simple time-based survival estimate may not fully represent.
+
+The resulting framework can help examine questions around **case persistence, procedural progression, and the likelihood of disposal as hearings accumulate**.
+
+## Key Analytical Question
+
+The project can be summarized as:
+
+**How does the probability of case disposal change conditional on the number of hearings a case has already experienced?**
+
+This makes conditional survival analysis particularly relevant for understanding prolonged litigation and identifying points in the judicial process where cases may become increasingly persistent.
+
+## Context
+
+This work was undertaken as part of my **Research Internship at XKDR**, working with the **Legal Systems Team** on quantitative approaches to understanding judicial processes and timelines.
+
+The project builds on the team's existing survival-analysis work and focuses specifically on **conditional survival analysis using hearings as the conditioning variable**.
+
+## Repository Structure
+
+```text
 .
 ├── README.md
-├── kaplan_meier/
-├── cox_proportional_hazards/
 ├── conditional_survival/
 ├── notebooks/
 └── results/
+```
 
-Repository structure may vary depending on the final organization of the project.
-
-Context
-
-This project was undertaken as part of my Research Internship at XKDR, working with the Legal Systems Team on quantitative approaches to understanding judicial processes and timelines.
-
-The work is intended primarily as a methodological and exploratory foundation for subsequent analysis using judicial case data.
+The repository structure may vary depending on the final organization of the project.
