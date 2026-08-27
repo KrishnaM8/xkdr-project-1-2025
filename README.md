@@ -1,5 +1,3 @@
-# xkdr-project-1-2025
-
 # Conditional Survival Analysis of Judicial Case Timelines
 
 ## Overview
